@@ -16,3 +16,12 @@ module top_module(
     assign out = state[D];
 
 endmodule
+
+
+//
+[State	Next state	Output
+       in=0	in=1
+A	A	B	0
+B	C	B	0
+C	A	D	0
+D	C	B	1]
