@@ -31,18 +31,12 @@ module top_module(
             out_bytes <= 24'b0;
         end
         else begin
-            if (state == byte1) begin
-                out_bytes[23:16] <= in;
-            end
-            else if (state == byte2) begin
-                 out_bytes[15:8] <= in;
-            end
-            else if (state == byte3) begin
-                out_bytes[7:0] <= in;
-            end
-            else if (state == DONE) begin
-                out_bytes[23:16] <= (in[3])? in:out_bytes[23:16];
-            end
+            case (state)
+                byte1: out_bytes[23:16] <= in;
+                byte2: out_bytes[15:8] <= in;
+                byte3: out_bytes[7:0] <= in;
+                DONE: out_bytes[23:16] <= (in[3])? in:out_bytes[23:16];
+            endcase
         end
-    end    
+    end 
 endmodule
