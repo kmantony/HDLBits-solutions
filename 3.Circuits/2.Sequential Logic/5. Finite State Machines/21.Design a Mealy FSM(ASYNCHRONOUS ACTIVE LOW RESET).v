@@ -35,8 +35,8 @@ module top_module (
     end
     
     //FLIPFLOP
-    always @(posedge clk, negedge aresetn) begin
-        if (~aresetn)
+    always @(posedge clk, negedge aresetn) begin  //ASYNCHRONOUS
+        if (~aresetn)                             //ACTIVE LOW
             state <= S0;
         else
             state <= next_state;
